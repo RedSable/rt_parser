@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/27 23:08:05 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/27 23:20:47 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ char		*delete_tabs(char *str)
 
 	j = 0;
 	i = 0;
-	res = (char *)malloc(sizeof(char) * char_count(str) + 1);
+	res = (char *)malloc(sizeof(char) * (char_count(str) + 1));
 	while (str[i] != '\0')
 	{
 		if (str[i] != '\t' && str[i] != ' ' && str[i] != '\n')
