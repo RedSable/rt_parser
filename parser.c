@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/27 22:29:12 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/27 23:08:05 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,14 @@ int			get_block_type(char *str)
 	j = 0;
 	if (str[0] == '=')
 		return (-1);
-	type = (char *)malloc(sizeof(char) * block_type_lengh(str) + 1);
+	type = (char *)malloc(sizeof(char) * (block_type_lengh(str) + 1));
 	while (str[i] != '=')
 	{
 		if (str[i] == '{')
+		{
+			free(type);
 			return (-1);
+		}
 		i++;
 	}
 	i++;
