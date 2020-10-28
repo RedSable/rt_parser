@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/27 23:20:47 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:56:55 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,16 @@ int			check_block_type(char *str)
 
 	i = 0;
 	to_lower(str);
-	if (!ft_strcmp(str, "texture"))
+	if (!ft_strcmp(str, "ambient_light"))
 		i = 1;
-	if (!ft_strcmp(str, "material"))
-		i = 2;
-	if (!ft_strcmp(str, "color"))
-		i = 3;
 	if (!ft_strcmp(str, "object"))
-		i = 4;
+		i = 2;
 	if (!ft_strcmp(str, "light"))
-		i = 5;
+		i = 3;
 	if (!ft_strcmp(str, "camera"))
-		i = 6;
+		i = 4;
+	if (!ft_strcmp(str, "options"))
+		i = 5;
 	free(str);
 	return (i);
 }
@@ -51,23 +49,11 @@ int			check_block_type(char *str)
 int			block_type_lengh(char *str)
 {
 	int		i;
-	int		count;
 
-	count = 0;
 	i = 0;
-	while (str[i] != '=')
-	{
-		if (str[i] == '{')
-			return (-1);
+	while (str[i] != '{' && str[i] != '=')
 		i++;
-	}
-	i++;
-	while (str[i] != '{')
-	{
-		i++;
-		count++;
-	}
-	return (count);
+	return (i);
 }
 
 int			get_block_type(char *str)
@@ -78,20 +64,10 @@ int			get_block_type(char *str)
 
 	i = 0;
 	j = 0;
-	if (str[0] == '=')
+	if (str[0] == '=' || str[0] == '{')
 		return (-1);
 	type = (char *)malloc(sizeof(char) * (block_type_lengh(str) + 1));
-	while (str[i] != '=')
-	{
-		if (str[i] == '{')
-		{
-			free(type);
-			return (-1);
-		}
-		i++;
-	}
-	i++;
-	while (str[i] != '{')
+	while (str[i] != '{' && str[i] != '=')
 	{
 		type[j] = str[i];
 		i++;
@@ -217,17 +193,15 @@ int			parser(char *file_name)  //t_tr *rt
 		if (check_brackets(line) == 1)
 		{
 			if (get_block_type(line) == 1)
-				printf("texture:\n");
+				printf("ambient_light:\n");
 			else if (get_block_type(line) == 2)
-				printf("material:\n");
-			else if (get_block_type(line) == 3)
-				printf("color:\n");
-			else if (get_block_type(line) == 4)
 				printf("object:\n");
-			else if (get_block_type(line) == 5)
+			else if (get_block_type(line) == 3)
 				printf("light:\n");
-			else if (get_block_type(line) == 6)
+			else if (get_block_type(line) == 4)
 				printf("camera:\n");
+			else if (get_block_type(line) == 5)
+				printf("options:\n");
 			else if (get_block_type(line) == 0)
 			{
 				printf("Unknown type\n\n");
