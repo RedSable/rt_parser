@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/28 18:56:55 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/29 15:59:49 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,15 +192,15 @@ int			parser(char *file_name)  //t_tr *rt
 		printf("%d:\n\n", i);
 		if (check_brackets(line) == 1)
 		{
-			if (get_block_type(line) == 1)
+			if (get_block_type(line) == ambient_light)
 				printf("ambient_light:\n");
-			else if (get_block_type(line) == 2)
+			else if (get_block_type(line) == object)
 				printf("object:\n");
-			else if (get_block_type(line) == 3)
+			else if (get_block_type(line) == light)
 				printf("light:\n");
-			else if (get_block_type(line) == 4)
+			else if (get_block_type(line) == camera)
 				printf("camera:\n");
-			else if (get_block_type(line) == 5)
+			else if (get_block_type(line) == options)
 				printf("options:\n");
 			else if (get_block_type(line) == 0)
 			{
