@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:43:41 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/30 18:31:46 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/30 23:54:31 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ typedef struct s_color	t_color;
 typedef enum e_types		t_type;
 typedef enum e_texture_type			t_texture_type;
 typedef struct s_texture			t_texture; //32 bytes
-typedef struct	s_color_list		t_color_list;
-typedef struct s_material_list		t_material_list;
-typedef struct	s_texture_list		t_texture_list;
-typedef struct	s_parse_list			t_parse_list;
-typedef struct	s_light_list		t_light_list;
 typedef enum e_block_type			t_block_type;
 
 enum	e_block_type
@@ -103,9 +98,9 @@ struct	s_image_texture
 
 union							u_texture_data
 {
-	struct	s_solid_texture			solid;
-	struct	s_checker_texture		checker;
-	struct	s_smooth_perlin_texture	smooth_perlin;
+	struct s_solid_texture			solid;
+	struct s_checker_texture		checker;
+	struct s_smooth_perlin_texture	smooth_perlin;
 };
 
 struct						s_texture		//32bytes
@@ -199,11 +194,6 @@ typedef struct s_parsed_object
 	t_type		type;
 }				t_parsed_object;
 
-typedef struct	s_selector
-{
-	char		*name;
-	void		(*func) (char*, void*);
-}				t_selector;
 
 // int			char_count(char *str);
 // int		block_pars(char *line, int block_type);
