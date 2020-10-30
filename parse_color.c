@@ -44,6 +44,9 @@ void	get_color(char *str, t_color *color)
 	float	b;
 	char	**rgb;
 
+	r = 0;
+	g = 0;
+	b = 0;
 	if (str[0] == '0')
 		set_color_int(color, ft_atoi(str[2]));
 	else if (str[0] == '{')
@@ -53,5 +56,22 @@ void	get_color(char *str, t_color *color)
 		if (rgb[1] != NULL) g = get_float(rgb[1]);
 		if (rgb[2] != NULL) b = get_float(rgb[2]);
 		set_color_float(color, r, g, b);
+	}
+}
+
+void	get_vec(char *str, cl_float4 vector)
+{
+	float	x;
+	float	y;
+	float	z;
+	char	**xyz;
+
+	if (str[0] == '{')
+	{
+		xyz = ft_strsplit(str, ',');
+		x = get_float(xyz[0]);
+		if (xyz[1] != NULL) y = get_float(xyz[1]);
+		if (xyz[2] != NULL) z = get_float(xyz[2]);
+		vector = {.x = x, .y = y, .z = z};
 	}
 }
