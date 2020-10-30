@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:43:41 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/28 21:15:20 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/30 18:31:46 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ typedef struct s_material_list		t_material_list;
 typedef struct	s_texture_list		t_texture_list;
 typedef struct	s_parse_list			t_parse_list;
 typedef struct	s_light_list		t_light_list;
+typedef enum e_block_type			t_block_type;
+
+enum	e_block_type
+{
+	ambient_light = 1,
+	object,
+	light,
+	camera,
+	options
+};
 
 enum	e_texture_type
 {
@@ -188,6 +198,12 @@ typedef struct s_parsed_object
 	cl_float	r2;
 	t_type		type;
 }				t_parsed_object;
+
+typedef struct	s_selector
+{
+	char		*name;
+	void		(*func) (char*, void*);
+}				t_selector;
 
 // int			char_count(char *str);
 // int		block_pars(char *line, int block_type);

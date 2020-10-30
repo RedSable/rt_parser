@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 21:41:52 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/29 22:23:48 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/30 19:50:06 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "parser.h"
 #include "camera.h"
 #include "rt_options.h"
+
+// t_selector	selector = {{"type", func()},
+// 						{"color", func()}}
 
 int		pars_ambient_light(char *line)
 {
@@ -83,14 +86,63 @@ t_camera		pars_camera(char *line)
 	return (camera);
 }
 
+int		pars_options_token(t_rt_options options, char check[256])
+{
+	char	a[256];
+	char	b[256];
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (check[i] != '=' && check != '{')
+	{
+		a[j] = check[i];
+		i++;
+		j++;
+	}
+	a[j] = '\0';
+	i++;
+	j = 0;
+	while (check[i] != '\0')
+	{
+		b[j] = check[i];
+		i++;
+		j++;
+	}
+	b[j] = '\0';
+}
+
 int		pars_options(char *line)
 {
 	t_rt_options	options;
+	char			check[256];
+	char			*tmp;
+	int				i;
 
-	options.ambient_occlusion = get_ambient_occlusion(line);
-	options.area_lightning = get_area_lightning(line);
-	options.background_color = get_background_color(line);
-	options.depth = get_depth(line);
-	options.shadows = get_shadows(line);
+	i = 0;
+	tmp = line;
+	options = get_default_options();
+	while (*line != '{')
+		*line++;
+	*line++;
+	while (*line != '\0')
+	{
+		while (*line != ';' && *line != '\0')
+		{
+			check[i] = *line;
+			*line++;
+			i++;	
+		}
+		check[i] = '\0';
+		*line++;
+		i = 0;
+		pars_options_token(options, check);
+	}
+	// options.ambient_occlusion = get_ambient_occlusion(line);
+	// options.area_lightning = get_area_lightning(line);
+	// options.background_color = get_background_color(line);
+	// options.depth = get_depth(line);
+	// options.shadows = get_shadows(line);
 	return (0);
 }
