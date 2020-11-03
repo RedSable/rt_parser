@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 20:08:33 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/03 22:05:52 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/03 22:11:40 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ t_selector		g_selector_obj[] = { {"origin", offsetof(t_parsed_object, origin), g
 									{"r2", offsetof(t_parsed_object, r2), get_float},
 									{"maxm", offsetof(t_parsed_object, maxm), get_float},
 									{"minm", offsetof(t_parsed_object, minm), get_float},
-									{"material", NULL, pars_material},
-									{"texture", NULL, pars_texture} };
+									{"material", offsetof(t_parsed_object, material), pars_material},
+									{"texture", offsetof(t_parsed_object, texture_id), pars_texture} };
 
 t_selector		g_selector_mat[] = { {"type", offsetof(t_parsed_object, material.type), get_mat_type},
 									{"ka", offsetof(t_parsed_object, material.ka), get_float},
