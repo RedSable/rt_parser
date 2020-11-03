@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_types.c                                        :+:      :+:    :+:   */
+/*   get_obj_mat_types.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 21:18:59 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/03 21:34:29 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/03 21:43:08 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int					get_mat_type_value(char *str)
 void				get_obj_type(char *str, int offset, void *data)
 {
 	unsigned char	*v;
-	t_type			type;
+	t_type			*type;
 
 	v = (unsigned char *)data + offset;
 	type = (t_type *)v;
@@ -74,7 +74,7 @@ void				get_obj_type(char *str, int offset, void *data)
 void				get_mat_type(char *str, int offset, void *data)
 {
 	unsigned char	*v;
-	t_material_type	type;
+	t_material_type	*type;
 
 	v = (unsigned char *)data + offset;
 	type = (t_material_type *)v;
