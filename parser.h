@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "OpenCL/opencl.h"
+# include "color.h"
 # include "./libft/includes/libft.h"
 
 typedef struct s_material			t_material; //64 bytes
@@ -63,14 +64,6 @@ enum	e_types
 	rectangle,
 	generic_shere
 	//todo(dmelessa): another generic types
-};
-
-struct			s_color
-{
-	cl_float	r;
-	cl_float	g;
-	cl_float	b;
-	cl_float	a;
 };
 
 struct		s_solid_texture
@@ -181,6 +174,7 @@ struct				s_ambient_occluder
 typedef struct s_parsed_object
 {
 	t_material	material;
+	t_texture	texture;
 	cl_float4	origin;
 	cl_float4	vector1;
 	cl_float4	vector2;

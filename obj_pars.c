@@ -15,7 +15,7 @@
 #include "parser.h"
 // #include "camera.h"
 // #include "rt_options.h"
-// #include "offset.h"
+#include "offset.h"
 
 int				str_len(char *str)
 {
@@ -77,7 +77,7 @@ char			*get_value(char *str)
 	return (b);
 }
 
-void				pars_object(char *str)
+void			pars_object(char *str)
 {
 	char			*a;
 	char			*b;
@@ -107,7 +107,7 @@ void				pars_object(char *str)
 	// add_parsed_object(obj);
 }
 
-int		main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	char	*str="object{type=torus;radius=1.0f;radius2=0.2f;origin={1,2,3};rotate={x=45;y=30};scale={2.0f,2.0f,2.0f};material={type=dielectric;kt=1.5f}}";
 	char	*line = "object{rotate={x=45;y=30}}";

@@ -12,6 +12,37 @@
 
 #include "offset.h"
 
+void	set_color_int(t_color *color, int value)
+{
+	color->r = ((value >> 16) & 0x000000ff) / 255.f;
+	color->g = ((value >> 8) & 0x000000ff) / 255.0f;
+	color->b = (value & 0x000000ff) / 255.0f;
+}
+
+void		free_tab(char **tab)
+{
+	int		n;
+
+	n = 0;
+	while (NULL != tab[n])
+	{
+		free(tab[n]);
+		tab[n] = NULL;
+		n += 1;
+	}
+	free(tab);
+}
+
+int			len_word(char *str)
+{
+	int len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}
+
 float		ft_atofloat(char *str) //функция говно, нужна другая
 {
 	char	**arr;

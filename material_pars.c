@@ -12,10 +12,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "parser.h"
 #include "offset.h"
 
-void		pars_material(char *str) //, int offset, void *data)
+void		pars_material(char *str, int offset, void *data)
 {
 	char			*a;
 	char			*b;

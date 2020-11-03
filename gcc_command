@@ -1,0 +1,1 @@
+gcc -o obj_pars.out obj_pars.c get_tex_cam_types.c get_first_values.c get_obj_mat_types.c get_light_type.c material_pars.c ft_atoi_base.c libft/libft.a -I./libft/includes
