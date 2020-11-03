@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 00:10:21 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/31 00:46:43 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/03 22:04:58 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,9 @@ void		get_uchar(char *str, int offset, void *data)
 	unsigned char	*v;
 	cl_uchar		*c;
 
-
+	v = (unsigned char *)data + offset;
+	c = (cl_uchar *)v;
+	c = 'A';
 }
 
 void		get_int(char *str, int offset, void *data)

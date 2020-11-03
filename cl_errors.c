@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 18:49:39 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/01 20:53:30 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/03 17:58:39 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,34 @@ void		die(char *str)
 {
 	ft_putstr(str);
 	exit(-1);
+}
+
+void		error_5(num)
+{
+	if (num == CL_INVALID_EVENT_WAIT_LIST)
+		die("CL_INVALID_EVENT_WAIT_LIST\n");
+	else if (num == CL_INVALID_EVENT)
+		die("CL_INVALID_EVENT\n");
+	else if (num == CL_INVALID_EVENT)
+		die("CL_INVALID_EVENT\n");
+	else if (num == CL_INVALID_GL_OBJECT)
+		die("CL_INVALID_GL_OBJECT\n");
+	else if (num == CL_INVALID_BUFFER_SIZE)
+		die("CL_INVALID_BUFFER_SIZE\n");
+	else if (num == CL_INVALID_MIP_LEVEL)
+		die("CL_INVALID_MIP_LEVEL\n");
+	else if (num == CL_INVALID_GLOBAL_WORK_SIZE)
+		die("CL_INVALID_GLOBAL_WORK_SIZE\n");
+	else if (num == CL_INVALID_PROPERTY)
+		die("CL_INVALID_PROPERTY\n");
+	else if (num == CL_INVALID_IMAGE_DESCRIPTOR)
+		die("CL_INVALID_IMAGE_DESCRIPTOR'\n");
+	else if (num == CL_INVALID_COMPILER_OPTIONS)
+		die("CL_INVALID_COMPILER_OPTIONS\n");
+	else if (num == CL_INVALID_LINKER_OPTIONS)
+		die("CL_INVALID_LINKER_OPTIONS\n");
+	else if (num == CL_INVALID_DEVICE_PARTITION_COUNT)
+		die("CL_INVALID_DEVICE_PARTITION_COUNT\n");
 }
 
 void		error_4(int num)
@@ -40,30 +68,7 @@ void		error_4(int num)
 		die("CL_INVALID_WORK_ITEM_SIZE\n");
 	else if (num == CL_INVALID_GLOBAL_OFFSET)
 		die("CL_INVALID_GLOBAL_OFFSET\n");
-	else if (num == CL_INVALID_EVENT_WAIT_LIST)
-		die("CL_INVALID_EVENT_WAIT_LIST\n");
-	else if (num == CL_INVALID_EVENT)
-		die("CL_INVALID_EVENT\n");
-	else if (num == CL_INVALID_EVENT)
-		die("CL_INVALID_EVENT\n");
-	else if (num == CL_INVALID_GL_OBJECT)
-		die("CL_INVALID_GL_OBJECT\n");
-	else if (num == CL_INVALID_BUFFER_SIZE)
-		die("CL_INVALID_BUFFER_SIZE\n");
-	else if (num == CL_INVALID_MIP_LEVEL)
-		die("CL_INVALID_MIP_LEVEL\n");
-	else if (num == CL_INVALID_GLOBAL_WORK_SIZE)
-		die("CL_INVALID_GLOBAL_WORK_SIZE\n");
-	else if (num == CL_INVALID_PROPERTY)
-		die("CL_INVALID_PROPERTY\n");
-	else if (num == CL_INVALID_IMAGE_DESCRIPTOR)
-		die("CL_INVALID_IMAGE_DESCRIPTOR'\n");
-	else if (num == CL_INVALID_COMPILER_OPTIONS)
-		die("CL_INVALID_COMPILER_OPTIONS\n");
-	else if (num == CL_INVALID_LINKER_OPTIONS)
-		die("CL_INVALID_LINKER_OPTIONS\n");
-	else if (num == CL_INVALID_DEVICE_PARTITION_COUNT)
-		die("CL_INVALID_DEVICE_PARTITION_COUNT\n");
+	error_5(num);
 }
 
 void		error_3(int num)

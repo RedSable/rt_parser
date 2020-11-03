@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:43:41 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/30 23:54:31 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/03 21:13:48 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,5 +197,8 @@ typedef struct s_parsed_object
 
 // int			char_count(char *str);
 // int		block_pars(char *line, int block_type);
+int				str_len(char *str);
+char			*get_key(char *str);
+char			*get_value(char *str);
 
 #endif

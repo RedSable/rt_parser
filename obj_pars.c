@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 21:41:52 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/03 21:11:57 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/03 22:01:44 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char			*get_key(char *str)
 	char			*a;
 	int				i;
 
-	a = (char *)malloc(sizeof(char) * 32);
+	a = (char *)malloc(sizeof(char) * 256);
 	i = 0;
 	while (*str != '=' && *str != '\0')
 	{
@@ -52,7 +52,7 @@ char			*get_value(char *str)
 	int			i;
 
 	i = 0;
-	b = (char *)malloc(sizeof(char) * 32);
+	b = (char *)malloc(sizeof(char) * 256);
 	if (*str == '{')
 	{
 		str++;
