@@ -6,13 +6,14 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 22:41:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/04 22:44:15 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/04 22:47:50 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "errors.h"
 #include "parser.h"
 
+
+ //я зафакапил нужно вернуть массив структур, они в cl.h идут немного не по порядку
 static char		*g_err_array[] = {
 	"CL_SUCCESS",
 	"CL_DEVICE_NOT_FOUND",
