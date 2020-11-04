@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:43:41 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/03 21:13:48 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/04 21:07:01 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "OpenCL/opencl.h"
 # include "color.h"
 # include "./libft/includes/libft.h"
+# include <math.h>
 
 typedef struct s_material			t_material; //64 bytes
 typedef enum e_material_type		t_material_type;
@@ -183,8 +184,8 @@ typedef struct s_parsed_object
 	cl_float3	scaling;
 	cl_float	minm;
 	cl_float	maxm;
-	cl_float	r;
-	cl_float	r2;
+	cl_float	radius;
+	cl_float	radius2;
 	t_type		type;
 }				t_parsed_object;
 
@@ -194,5 +195,8 @@ typedef struct s_parsed_object
 int				str_len(char *str);
 char			*get_key(char *str);
 char			*get_value(char *str);
+t_parsed_object		get_default_obj();
+void			get_default_material(t_material *material);
+void			get_default_texture(t_texture *texture);
 
 #endif

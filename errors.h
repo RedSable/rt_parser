@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 12:10:42 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/04 21:23:50 by aapricot         ###   ########.fr       */
+/*   Created: 2020/11/03 22:41:16 by aapricot          #+#    #+#             */
+/*   Updated: 2020/11/03 22:59:29 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const char *s1, const char *s2)
-{
-	const unsigned char *p1;
-	const unsigned char *p2;
+#ifndef ERORRS_H
+# define ERRORS_H
 
-	p1 = (const unsigned char *)s1;
-	p2 = (const unsigned char *)s2;
-	while (*p1 && (*p1 == *p2))
-	{
-		++p1;
-		++p2;
-	}
-	return (*p1 - *p2);
-}
+# include "libft.h"
+
+typedef struct s_cl_errors		t_cl_errors;
+
+struct							s_cl_errors
+{
+	int							numerror;
+	char						*nem_message;
+};
+
+#endif

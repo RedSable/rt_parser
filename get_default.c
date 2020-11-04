@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 17:11:31 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/01 18:10:38 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/04 20:52:07 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,13 @@ t_light			get_default_light()
 	return (light);
 }
 
-t_texture		get_default_texture()
+void			get_default_texture(t_texture *texture)
 {
-	t_texture	texture;
-
-	texture.type = solid;
-	texture.data.solid.color = (t_color){255.0f, 0.0f, 0.0f};
-	texture.data.checker.even = (t_color){255.0f, 0.0f, 0.0f};
-	texture.data.checker.odd = (t_color){255.0f, 0.0f, 0.0f};
-	texture.data.smooth_perlin.scale = 0.0f;
-	return (texture);
+	texture->type = solid;
+	texture->data.solid.color = (t_color){255.0f, 0.0f, 0.0f};
+	texture->data.checker.even = (t_color){255.0f, 0.0f, 0.0f};
+	texture->data.checker.odd = (t_color){255.0f, 0.0f, 0.0f};
+	texture->data.smooth_perlin.scale = 0.0f;
 }
 
 void			get_default_material(t_material *material)
@@ -73,7 +70,6 @@ void			get_default_material(t_material *material)
 	material->kt = 0.0f;
 	material->reflective_color = (t_color){255.0f, 0.0f, 0.0f};
 	material->type = matte;
-	material->texture_id = add_texture(get_default_texture());
 }
 
 t_parsed_object		get_default_obj()
@@ -82,11 +78,12 @@ t_parsed_object		get_default_obj()
 
 	obj.direction = (cl_float4){0.0f, 0.0f, 0.0f};
 	get_default_material(&obj.material);
+	get_default_texture(&obj.texture);
 	obj.maxm = 0.0f;
 	obj.minm = 0.0f;
 	obj.origin = (cl_float4){0.0f, 0.0f, 0.0f};
-	obj.r2 = 0.0f;
-	obj.r = 0.0f;
+	obj.radius2 = 0.0f;
+	obj.radius = 0.0f;
 	obj.rotation = (cl_float3){0.0f, 0.0f, 0.0f};
 	obj.scaling = (cl_float3){0.0f, 0.0f, 0.0f};
 	obj.type = sphere;

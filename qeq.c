@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 18:48:31 by dmelessa          #+#    #+#             */
-/*   Updated: 2020/10/30 20:45:43 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/04 19:47:23 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(void)
 	{
 		if (strcmp(name, g_array[i].name) == 0)
 		{
-			g_array[i].func(NULL, g_array[i].offset, &obj);
+			g_array[i].func(NULL, g_array[i].offset, &obj, 1);
 			printf("%f %f %f\n", obj.rotation.x, obj.rotation.y, obj.rotation.z);
 			return (0);
 		}

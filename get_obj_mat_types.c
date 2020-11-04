@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 21:18:59 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/03 21:43:08 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/04 21:57:41 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void				get_obj_type(char *str, int offset, void *data)
 
 	v = (unsigned char *)data + offset;
 	type = (t_type *)v;
-	type = get_obj_type_value(str);
+	*type = get_obj_type_value(str);
 	// if (type == -1)
 	// 	die("No valid object type");  if error. or we can get default value
 }
@@ -78,5 +78,5 @@ void				get_mat_type(char *str, int offset, void *data)
 
 	v = (unsigned char *)data + offset;
 	type = (t_material_type *)v;
-	type = get_mat_type_value(str);
+	*type = get_mat_type_value(str);
 }
