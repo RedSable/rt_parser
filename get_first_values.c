@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 00:10:21 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/03 22:04:58 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/05 19:31:02 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int			len_word(char *str)
 	int len;
 
 	len = 0;
-	while (str[len] != '\0')
+	while (str[len] != '\0' && ft_isdigit(str[len]))
 		len++;
 	return (len);
 }
@@ -53,6 +53,8 @@ float		ft_atofloat(char *str) //функция говно, нужна друга
 	i = 1;
 	res = 0.0;
 	arr = ft_strsplit(str, '.');
+	if (arr[0] == NULL)
+		return (res);
 	if (arr[0][0] == '-' && arr[0][1] == '0')
 		i = -1;
 	res += ft_atoi(arr[0]);
@@ -77,22 +79,30 @@ void		get_color(char *str, int offset, void *data)
 	color->r = 0.0f;
 	color->g = 0.0f;
 	color->b = 0.0f;
+	rgb = NULL;
 	if (str[0] == '0' && str[1] == 'x')
 		set_color_int(color, ft_atoi_hex(str[2]));
 	else if (str[0] == '{')
 	{
 		rgb = ft_strsplit(str, ',');
 		if (rgb[0] == NULL)
+		{
+			free_tab(rgb);
 			return ;
+		}
 		else
 			color->r = ft_atofloat(rgb[0]);
 		if (rgb[1] == NULL)
+		{
+			free_tab(rgb);
 			return ;
+		}
 		else
 			color->g = ft_atofloat(rgb[1]);
 		if (rgb[2] != NULL)
 			color->b = ft_atofloat(rgb[2]);
 	}
+	free_tab(rgb);
 }
 
 void		get_vector(char *str, int offset, void *data)
@@ -108,15 +118,22 @@ void		get_vector(char *str, int offset, void *data)
 	vec_ptr->z = 0.0f;
 	split = ft_strsplit(str, ',');
 	if (split[0] == NULL)
+	{
+		free_tab(split);
 		return ;
+	}
 	else
 		vec_ptr->x = ft_atofloat(split[0]);
 	if (split[1] == NULL)
+	{
+		free_tab(split);
 		return ;
+	}
 	else
 		vec_ptr->y = ft_atofloat(split[1]);
 	if (split[2] != NULL)
 		vec_ptr->z = ft_atofloat(split[2]);
+	free_tab(split);
 }
 
 void		get_float(char *str, int offset, void *data)

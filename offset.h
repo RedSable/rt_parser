@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 20:08:33 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/04 21:02:43 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/05 19:59:34 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ struct			s_selector
 void			get_vector(char *str, int offset, void *data);
 void			get_obj_type(char *str, int offset, void *data);
 void			get_mat_type(char *str, int offset, void *data);
-// void			get_tex_type(char* str, int offset, void *data);
+void			get_tex_type(char* str, int offset, void *data);
 void			get_cam_type(char *str, int offset, void *data);
 void			get_light_type(char *str, int offset, void *data);
 void			get_float(char *str, int offset, void *data);
@@ -44,14 +44,14 @@ void			get_int(char *str, int offset, void *data);
 
 extern t_selector		g_selector_obj[];
 extern t_selector		g_selector_mat[];
-// extern t_selector		g_selector_tex[];
+extern t_selector		g_selector_tex[];
 extern t_selector		g_selector_cam[];
 extern t_selector		g_selector_opt[];
 extern t_selector		g_selector_light[];
 
 extern int				g_obj_selector_size;
 extern int				g_mat_selector_size;
-// extern int				g_tex_selector_size;
+extern int				g_tex_selector_size;
 extern int				g_cam_selector_size;
 extern int				g_opt_selector_size;
 extern int				g_light_selector_size;

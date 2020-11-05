@@ -1,103 +1,103 @@
 ---scene.scn---
 
 camera  = {
-    type = thins lens/default/fisheye/ spherical
-    origin = {0, 2, 0},
-    lookat = {0, 0 , 0},
-    rotate = { x = 30, y = 45, z = 90 },
-    zoom = 2,
-    viewplanedistance = 1600,
-    focus = 2,
-    l = 0.5,
+    type = thins lens/default/fisheye/ spherical;
+    origin = {0, 2, 0};
+    lookat = {0, 0 , 0};
+    rotate = { x = 30; y = 45; z = 90 };
+    zoom = 2;
+    viewplanedistance = 1600;
+    focus = 2;
+    l = 0.5
 }
 
 ambient_light = 
 {
-    type = constant/ambient occlusion
-    ls = 0.5,
-    color = { 1.0f, 1.0f, 1.0f}
+    type = constant/ambient occlusion;
+    ls = 0.5;
+    color = { 1.0f, 1.0f, 1.0f;
     min_amount = 0.25
 }
 
 
 options  = {
-    tracer = area light tracer/ray tracer/ path tracer,
-    shadows = true,
+    tracer = area light tracer/ray tracer/ path tracer;
+    shadows = true;
     depth = 5
 }
 
 sphere #object type
 {
-    origin = { 0, 0 , 0}
+    origin = { 0, 0 , 0};
     material = {
-        type = matte,
-        kd = 0.7,
+        type = matte;
+        kd = 0.7;
         ka = 0.6
-    }
+    };
     texture = {
-        type = solid,
-        color = { r = 0.3, .g = 0.2, .b = 0.7 }
-    },
+        type = solid;
+        color = { r = 0.3; g = 0.2; b = 0.7 }
+    }
 }
 
-object 
+object =
 {
-    type = rectangle,
-    radius = 3.0f,
-    origin = {0, 5, 0},
+    type = rectangle;
+    radius = 3.0f;
+    origin = {0, 5, 0};
     material = {
-        type = emissive/diffuse_light,
-        ls = 1.0,
-    },
+        type = emissive/diffuse_light;
+        ls = 1.0;
+    };
     textue = {
-        type = wave,
+        type = wave;
         color = 0x0000ff00
     }
 }
 
-object
+object =
 {
-    type = cylinder,
-    radius = 2.0f,
-    origin = {-2, 0, 1},
-    rotate = { x = 30, y = 30, z = 30},
-    scale = { x = 1, y = 2, z = 1},
+    type = cylinder;
+    radius = 2.0f;
+    origin = {-2, 0, 1};
+    rotate = { x = 30; y = 30; z = 30};
+    scale = { x = 1; y = 2; z = 1};
     material = {
-        type = metal,
+        type = metal;
         kr = 1
-    },
+    };
     texture = {
-        type = checker,
-        color = 0x00ff0000,
+        type = checker;
+        color = 0x00ff0000;
         color2 = 0x0000ff00
     }
 }
 
-object 
+object =
 {
-    type = torus,
-    radius = 1.0f,
-    radius2 = 0.2f,
-    origin = {1, 2, 3}
-    rotate { x = 45}
-    scale = {2.0f, 2.0f, 2.0f}
+    type = torus;
+    radius = 1.0f;
+    radius2 = 0.2f;
+    origin = {1, 2, 3};
+    rotate { x = 45};
+    scale = {2.0f, 2.0f, 2.0f};
     material = {
-        type = dielectric,
+        type = dielectric;
         kt = 1.5f
     }
 }
 
-object
+object =
 {
-    type = directional_light,
-    ls = 0.3,
+    type = directional_light;
+    ls = 0.3;
     direction = { 1,  1, 1 }
 }
 
-light
+light =
 {
-    type = point_light,
-    ls = 1.0,
+    type = point_light;
+    ls = 1.0;
     color = 
 }
 

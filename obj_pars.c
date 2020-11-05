@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 21:41:52 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/04 21:46:35 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/05 20:08:48 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ char			*get_key(char *str)
 		str++;
 	}
 	a[i] = '\0';
-	str++;
 	return (a);
 }
 
@@ -91,12 +90,12 @@ char			*get_value(char *str)
 	char		*b;
 	int			i;
 
-	i = 0;
 	b = (char *)malloc(sizeof(char) * 256);
+	i = 0;
 	if (*str == '{')
 	{
 		str++;
-		while (*str != '}')
+		while (*str != '}' && *str != '\0')
 		{
 			b[i] = *str;
 			i++;
@@ -106,7 +105,7 @@ char			*get_value(char *str)
 	}
 	else
 	{
-		while (*str != ';' && *str != '}')
+		while (*str != ';' && *str != '}' && *str != '\0')
 		{
 			b[i] = *str;
 			i++;
@@ -125,7 +124,8 @@ void			pars_object(char *str)
 	int				i;
 
 	i = 0;
-	while (*str != '{')
+	obj = get_default_obj();
+	while (*str != '{' && *str != '\0')
 		str++;
 	str++;
 	while (*str != '\0')
@@ -140,8 +140,11 @@ void			pars_object(char *str)
 		while (i < g_obj_selector_size)
 		{
 			if (!ft_strcmp(g_selector_obj[i].name, a))
+			{
 				g_selector_obj[i].func(b, g_selector_obj[i].offset, &obj);
-			printf("key = %s\ncheck = %s\n\n", a, g_selector_obj[i].name);
+				break ;
+			}
+			// printf("key = %s\ncheck = %s\n\n", a, g_selector_obj[i].name);
 			i++;
 		}
 		i = 0;
@@ -157,5 +160,6 @@ int				main(int ac, char **av)
 	char	*line = "object{rotate={x=45;y=30}}";
 	// char	*str="object{type=torus;material={type=dielectric;kt=1.5f}}";
 	pars_object(str);
+	printf("\n\n%s\n", str);
 	return (0);
 }

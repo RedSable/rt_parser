@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 17:11:31 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/04 20:52:07 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/05 15:54:22 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void			get_default_texture(t_texture *texture)
 void			get_default_material(t_material *material)
 {
 	material->exp = 0.0f;
-	material->is_reflective = "false";
-	material->is_transparent = "false";
+	material->is_reflective = 1;
+	material->is_transparent = 1;
 	material->ka = 0.0f;
 	material->kd = 0.0f;
 	material->kr = 0.0f;
