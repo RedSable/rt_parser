@@ -12,7 +12,7 @@
 
 #include "offset.h"
 
-void	set_color_int(t_color *color, int value)
+void		set_color_int(t_color *color, int value)
 {
 	color->r = ((value >> 16) & 0x000000ff) / 255.f;
 	color->g = ((value >> 8) & 0x000000ff) / 255.0f;
@@ -70,8 +70,8 @@ float		ft_atofloat(char *str) //функция говно, нужна друга
 
 void		get_color(char *str, int offset, void *data)
 {
-	t_color		*color;
-	char	**rgb;
+	t_color			*color;
+	char			**rgb;
 	unsigned char	*v;
 
 	v = (unsigned char *)data + offset;
@@ -81,7 +81,7 @@ void		get_color(char *str, int offset, void *data)
 	color->b = 0.0f;
 	rgb = NULL;
 	if (str[0] == '0' && str[1] == 'x')
-		set_color_int(color, ft_atoi_hex(str[2]));
+		set_color_int(color, ft_atoi_hex(str + 2));
 	else if (str[0] == '{')
 	{
 		rgb = ft_strsplit(str, ',');
@@ -101,8 +101,8 @@ void		get_color(char *str, int offset, void *data)
 			color->g = ft_atofloat(rgb[1]);
 		if (rgb[2] != NULL)
 			color->b = ft_atofloat(rgb[2]);
+		free_tab(rgb);
 	}
-	free_tab(rgb);
 }
 
 void		get_vector(char *str, int offset, void *data)

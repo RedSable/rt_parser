@@ -49,7 +49,7 @@ object =
         type = emissive/diffuse_light;
         ls = 1.0;
     };
-    textue = {
+    texture = {
         type = wave;
         color = 0x0000ff00
     }
