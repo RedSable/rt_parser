@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 21:41:52 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/05 20:08:48 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/05 20:49:26 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char			*get_key(char *str)
 
 	a = (char *)malloc(sizeof(char) * 256);
 	i = 0;
-	while (*str != '=' && *str != '\0')
+	while (*str != '=' && *str != '\0' && i < 256)
 	{
 		a[i] = *str;
 		i++;
@@ -95,7 +95,7 @@ char			*get_value(char *str)
 	if (*str == '{')
 	{
 		str++;
-		while (*str != '}' && *str != '\0')
+		while (*str != '}' && *str != '\0' && i < 256)
 		{
 			b[i] = *str;
 			i++;
@@ -105,7 +105,7 @@ char			*get_value(char *str)
 	}
 	else
 	{
-		while (*str != ';' && *str != '}' && *str != '\0')
+		while (*str != ';' && *str != '}' && *str != '\0' && i < 256)
 		{
 			b[i] = *str;
 			i++;
@@ -154,12 +154,12 @@ void			pars_object(char *str)
 	add_parsed_object(&obj);
 }
 
-int				main(int ac, char **av)
-{
-	char	*str="object{type=torus;radius=1.0f;radius2=0.2f;origin={1,2,3};rotation={x=45;y=30};scaling={2.0f,2.0f,2.0f};material={type=dielectric;kt=1.5f}}";
-	char	*line = "object{rotate={x=45;y=30}}";
-	// char	*str="object{type=torus;material={type=dielectric;kt=1.5f}}";
-	pars_object(str);
-	printf("\n\n%s\n", str);
-	return (0);
-}
+// int				main(int ac, char **av)
+// {
+// 	char	*str="object{type=torus;radius=1.0f;radius2=0.2f;origin={1,2,3};rotation={x=45;y=30};scaling={2.0f,2.0f,2.0f};material={type=dielectric;kt=1.5f}}";
+// 	char	*line = "object{rotate={x=45;y=30}}";
+// 	// char	*str="object{type=torus;material={type=dielectric;kt=1.5f}}";
+// 	pars_object(str);
+// 	printf("\n\n%s\n", str);
+// 	return (0);
+// }

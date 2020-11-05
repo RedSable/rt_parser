@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:43:41 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/04 21:07:01 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/05 20:49:20 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,5 +198,6 @@ char			*get_value(char *str);
 t_parsed_object		get_default_obj();
 void			get_default_material(t_material *material);
 void			get_default_texture(t_texture *texture);
+void			pars_object(char *str);
 
 #endif

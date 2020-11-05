@@ -6,12 +6,13 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/29 15:59:49 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/05 20:49:44 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "parser.h"
+#include "offset.h"
 // #include "rt.h"
 
 void		to_lower(char *str)
@@ -195,7 +196,7 @@ int			parser(char *file_name)  //t_tr *rt
 			if (get_block_type(line) == ambient_light)
 				printf("ambient_light:\n");
 			else if (get_block_type(line) == object)
-				printf("object:\n");
+				pars_object(line);
 			else if (get_block_type(line) == light)
 				printf("light:\n");
 			else if (get_block_type(line) == camera)
