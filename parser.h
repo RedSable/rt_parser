@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include "OpenCL/opencl.h"
 # include "color.h"
+# include "camera.h"
 # include "./libft/includes/libft.h"
 # include <math.h>
 
@@ -197,6 +198,7 @@ char			*get_key(char *str);
 char			*get_value(char *str);
 t_parsed_object	get_default_obj();
 t_light			get_default_light();
+t_camera		get_default_camera();
 void			get_default_material(t_material *material);
 void			get_default_texture(t_texture *texture);
 void			pars_object(char *str);

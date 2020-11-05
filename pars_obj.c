@@ -39,8 +39,8 @@ void			add_parsed_object(t_parsed_object *object)
 {
 	printf("type = %d\n", object->type);
 	printf("origin.x = %f\n", object->origin.x);
-	printf("origin.x = %f\n", object->origin.y);
-	printf("origin.x = %f\n", object->origin.z);
+	printf("origin.y = %f\n", object->origin.y);
+	printf("origin.z = %f\n", object->origin.z);
 	printf("direction.x = %f\n", object->direction.x);
 	printf("direction.y = %f\n", object->direction.y);
 	printf("direction.z = %f\n", object->direction.z);
