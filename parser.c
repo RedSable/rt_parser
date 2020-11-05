@@ -198,7 +198,7 @@ int			parser(char *file_name)  //t_tr *rt
 			else if (get_block_type(line) == object)
 				pars_object(line);
 			else if (get_block_type(line) == light)
-				printf("light:\n");
+				pars_light(line);
 			else if (get_block_type(line) == camera)
 				printf("camera:\n");
 			else if (get_block_type(line) == options)

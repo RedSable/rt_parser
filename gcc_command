@@ -1,1 +1,1 @@
-gcc -o 321 pars_obj.c get_default.c get_first_values.c get_obj_mat_types.c get_light_type.c ft_atoi_base.c pars_material.c pars_texture.c  parser.c  libft/libft.a -I./libft/includes -g
+gcc -o 321 pars_obj.c get_default.c get_first_values.c get_obj_mat_types.c get_light_type.c ft_atoi_base.c pars_material.c pars_texture.c pars_light.c parser.c libft/libft.a -I./libft/includes -g

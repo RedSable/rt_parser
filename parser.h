@@ -195,7 +195,8 @@ typedef struct s_parsed_object
 int				str_len(char *str);
 char			*get_key(char *str);
 char			*get_value(char *str);
-t_parsed_object		get_default_obj();
+t_parsed_object	get_default_obj();
+t_light			get_default_light();
 void			get_default_material(t_material *material);
 void			get_default_texture(t_texture *texture);
 void			pars_object(char *str);

@@ -55,6 +55,7 @@ void			add_parsed_object(t_parsed_object *object)
 	printf("radius2 = %f\n", object->radius2);
 	printf("material\ntype = %d\n", object->material.type);
 	printf("kt = %f\n", object->material.kt);
+	printf("texture\ntype = %d\n", object->texture.type);
 }
 
 int				str_len(char *str)

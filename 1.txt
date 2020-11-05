@@ -11,14 +11,12 @@ camera  = {
     l = 0.5
 }
 
-ambient_light = 
+light =
 {
-    type = constant/ambient occlusion;
-    ls = 0.5;
-    color = { 1.0f, 1.0f, 1.0f;
-    min_amount = 0.25
+    type = directional;
+    ls = 1.0;
+    color = 0x00ff0000
 }
-
 
 options  = {
     tracer = area light tracer/ray tracer/ path tracer;
@@ -93,12 +91,3 @@ object =
     ls = 0.3;
     direction = { 1,  1, 1 }
 }
-
-light =
-{
-    type = point_light;
-    ls = 1.0;
-    color = 
-}
-
----------------
