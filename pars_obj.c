@@ -65,7 +65,6 @@ int				str_len(char *str)
 	count = 0;
 	while (str[count] != '\0')
 		count++;
-	count++;
 	return (count);
 }
 
@@ -76,7 +75,7 @@ char			*get_key(char *str)
 
 	a = (char *)malloc(sizeof(char) * 256);
 	i = 0;
-	while (*str != '=' && *str != '\0' && i < 256)
+	while (*str != '=' && *str != '\0' && i < 255)
 	{
 		a[i] = *str;
 		i++;
@@ -92,11 +91,12 @@ char			*get_value(char *str)
 	int			i;
 
 	b = (char *)malloc(sizeof(char) * 256);
+	// bzero(b, 256);
 	i = 0;
 	if (*str == '{')
 	{
 		str++;
-		while (*str != '}' && *str != '\0' && i < 256)
+		while (*str != '}' && *str != '\0' && i < 255)
 		{
 			b[i] = *str;
 			i++;
@@ -106,7 +106,7 @@ char			*get_value(char *str)
 	}
 	else
 	{
-		while (*str != ';' && *str != '}' && *str != '\0' && i < 256)
+		while (*str != ';' && *str != '}' && *str != '\0' && i < 255)
 		{
 			b[i] = *str;
 			i++;
@@ -114,6 +114,7 @@ char			*get_value(char *str)
 		}
 	}
 	b[i] = '\0';
+	ft_putendl(b);
 	return (b);
 }
 
@@ -133,8 +134,12 @@ void			pars_object(char *str)
 	{
 		a = get_key(str);
 		str += str_len(a);
+		if (*str != '\0')
+			str++;
 		b = get_value(str);
 		str += str_len(b);
+		if (*str != '\0')
+			str++;
 		// printf("%s\n%s\n====\n", a, b);
 		while (*str == ';' || *str == '}')
 			str++;

@@ -1,0 +1,14 @@
+object =
+{
+    type = rectangle;
+    radius = 3.0f;
+    origin = {0, 5, 0};
+    material = {
+        type = emissive/diffuse_light;
+        ls = 1.0;
+    };
+    texture = {
+        type = wave;
+        color = 0x0000ff00
+    }
+}

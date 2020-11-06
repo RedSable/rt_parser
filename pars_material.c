@@ -39,10 +39,16 @@ void		pars_material(char *str, int offset, void *data)
 	i = 0;
 	while (*str != '\0')
 	{
+		ft_putstr("#####:");
+		ft_putendl(str);
 		a = get_key(str);
 		str += str_len(a);
+		if (*str != '\0')
+			str++;
 		b = get_value(str);
 		str += str_len(b);
+		if (*str != '\0')
+			str++;
 		// printf("%s\n%s\n====\n", a, b);
 		// while (*str == ';' || *str == '}')
 		// 	str++;
