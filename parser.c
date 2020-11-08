@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/05 20:49:44 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/08 19:31:50 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,14 +183,15 @@ int			parser(char *file_name)  //t_tr *rt
 	int		fd;
 	char	*line;
 	int		i;
+	int		log;
 
 	i = 0;
+	log = open(ft_strjoin(ft_strjoin("logs/", file_name), ".log"), O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if ((fd = open(file_name, O_RDONLY)) < 0)
 		;
 	while ((line = get_read_block(fd)) != NULL)
 	{
 		line = delete_tabs(line);
-		printf("%d:\n\n", i);
 		if (check_brackets(line) == 1)
 		{
 			if (get_block_type(line) == ambient_light)
@@ -220,10 +221,16 @@ int			parser(char *file_name)  //t_tr *rt
 			printf("%s\n\n", line);
 		}
 		else
-			printf("Invalid block\n\n");
+		{
+			ft_putnbr_fd(i, log);
+			ft_putstr_fd("\nInvalid block:\n", log);
+			ft_putstr_fd(line, log);
+			ft_putchar_fd('\n', log);
+		}
 		free(line);
 		i++;
 	}
+	close(log);
 	close(fd);
 	return (0);
 }
