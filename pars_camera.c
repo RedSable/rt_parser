@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera_pars.c                                      :+:      :+:    :+:   */
+/*   pars_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:52:00 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/04 18:53:28 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/09 20:39:52 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			add_parsed_camera(t_camera *camera)
 	printf("direction.z = %f\n", camera->direction.z);
 }
 
-void		pars_camera(char *str, int offset, void *data)
+void		pars_camera(char *str)
 {
 	char			*a;
 	char			*b;

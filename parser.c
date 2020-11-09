@@ -6,13 +6,14 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/05 20:49:44 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/09 21:01:40 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "parser.h"
 #include "offset.h"
+#include "logs.h"
 // #include "rt.h"
 
 void		to_lower(char *str)
@@ -89,8 +90,8 @@ int			check_brackets(char *str)
 	brackets = 0;
 	while (str[i] != '\0')
 	{
-		if (count == 0 && brackets != 0)
-			return (-1);
+		// if (count == 0 && brackets != 0)
+		// 	return (-1);
 		if (str[i] == '{')
 		{
 			brackets++;
@@ -103,8 +104,10 @@ int			check_brackets(char *str)
 		}
 		i++;
 	}
-	if (count != 0 || brackets == 0)
+	if (count != 0)
 		return (-1);
+	else if (count == 0 && brackets == 0)
+		return (-2);
 	return (1);
 }
 
@@ -178,52 +181,50 @@ char		*get_read_block(int fd)
 	return (block_line);
 }
 
+void		pars_router(int block_type, char *block, int log)
+{
+	if (block_type == ambient_light)
+		printf("ambient_light:\n");
+	else if (block_type == object)
+		pars_object(block);
+	else if (block_type == light)
+		pars_light(block);
+	else if (block_type == camera)
+		pars_camera(block);
+	else if (block_type == options)
+		printf("options:\n");
+	else if (block_type == 0)
+		write_logs(UNKNOWN_SCENE_TYPE, log, block);
+	else if (block_type == -1)
+		write_logs(SCENE_TYPE_DOES_NOT_EXIST, log, block);
+}
+
 int			parser(char *file_name)  //t_tr *rt
 {
 	int		fd;
 	char	*line;
 	int		i;
+	int		log;
 
 	i = 0;
+	log = get_log_fd(file_name);
 	if ((fd = open(file_name, O_RDONLY)) < 0)
 		;
 	while ((line = get_read_block(fd)) != NULL)
 	{
 		line = delete_tabs(line);
-		printf("%d:\n\n", i);
-		if (check_brackets(line) == 1)
+		if ((i = check_brackets(line)) == 1)
 		{
-			if (get_block_type(line) == ambient_light)
-				printf("ambient_light:\n");
-			else if (get_block_type(line) == object)
-				pars_object(line);
-			else if (get_block_type(line) == light)
-				pars_light(line);
-			else if (get_block_type(line) == camera)
-				pars_camera(line);
-			else if (get_block_type(line) == options)
-				printf("options:\n");
-			else if (get_block_type(line) == 0)
-			{
-				printf("Unknown type\n\n");
-				i++;
-				free(line);
-				continue;
-			}
-			else if (get_block_type(line) == -1)
-			{
-				printf("Name or type does not exist\n\n");
-				i++;
-				free(line);
-				continue;
-			}
-			printf("%s\n\n", line);
+			pars_router(get_block_type(line), line, log);
+			// printf("%s\n\n", line);
 		}
+		else if (i == -2)
+			write_logs(COMMENT, log, line);
 		else
-			printf("Invalid block\n\n");
+			write_logs(BAD_BRACKETS, log, line);
 		free(line);
-		i++;
 	}
+	close(log);
 	close(fd);
 	return (0);
 }

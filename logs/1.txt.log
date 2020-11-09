@@ -1,0 +1,12 @@
+Comment:
+	-----scene-----
+
+Bad brackets in block:
+	camera={type=thinslens/default/fisheye/spherical;origin={0,2,0};lookat={0,0,0};rotate={x=30;y=45;z=90};zoom=2;viewplanedistance=1600;focus=2;l=0.5
+
+Unknown scene type:
+	lightqweqw={type=directional;ls=1.0;color=0x00ff0000}
+
+Scene type does not exist:
+	={tracer=arealighttracer/raytracer/pathtracer;shadows=true;depth=5}
+

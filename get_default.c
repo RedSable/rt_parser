@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 17:11:31 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/05 15:54:22 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/09 21:24:49 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_camera		get_default_camera()
 	camera.origin = (cl_float4){0.0f, 0.0f, 0.0f};
 	camera.ratio = 0.0f;
 	camera.sampler_id = 1;
-	camera.type = perspective;
+	camera.type = -2;
 	camera.up = (cl_float4){0.0f, 1.0f, 0.0f};
 	camera.zoom = 1.0f;
 	return (camera);
@@ -44,14 +44,14 @@ t_light			get_default_light()
 	light.direction = (cl_float4){0.0f, 0.0f, 0.0f};
 	light.ls = 0.0f;
 	light.origin = (cl_float4){0.0f, 0.0f, 0.0f};
-	light.type = point;
+	light.type = -2;
 	light.object_id = 0;
 	return (light);
 }
 
 void			get_default_texture(t_texture *texture)
 {
-	texture->type = solid;
+	texture->type = -2;
 	texture->data.solid.color = (t_color){255.0f, 0.0f, 0.0f};
 	texture->data.checker.even = (t_color){255.0f, 0.0f, 0.0f};
 	texture->data.checker.odd = (t_color){255.0f, 0.0f, 0.0f};
@@ -69,7 +69,7 @@ void			get_default_material(t_material *material)
 	material->ks = 0.0f;
 	material->kt = 0.0f;
 	material->reflective_color = (t_color){255.0f, 0.0f, 0.0f};
-	material->type = matte;
+	material->type = -2;
 }
 
 t_parsed_object		get_default_obj()
@@ -86,7 +86,7 @@ t_parsed_object		get_default_obj()
 	obj.radius = 0.0f;
 	obj.rotation = (cl_float3){0.0f, 0.0f, 0.0f};
 	obj.scaling = (cl_float3){0.0f, 0.0f, 0.0f};
-	obj.type = sphere;
+	obj.type = -2;
 	obj.vector1 = (cl_float4){0.0f, 0.0f, 0.0f};
 	obj.vector2 = (cl_float4){0.0f, 0.0f, 0.0f};
 	return (obj);
