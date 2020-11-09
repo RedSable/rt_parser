@@ -32,8 +32,6 @@ void		pars_texture(char *str, int offset, void *data)
 	i = 0;
 	while (*str != '\0')
 	{
-		ft_putstr("!!!!!:");
-		ft_putendl(str);
 		a = get_key(&str);
 		b = get_value(&str);
 		// printf("%s\n%s\n====\n", a, b);

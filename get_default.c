@@ -91,3 +91,12 @@ t_parsed_object		get_default_obj()
 	obj.vector2 = (cl_float4){0.0f, 0.0f, 0.0f};
 	return (obj);
 }
+
+t_rt_options		get_default_options()
+{
+	t_rt_options	options;
+
+	options.shadows = 1;
+	options.depth = 1;
+	return (options);
+}

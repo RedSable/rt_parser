@@ -11,4 +11,5 @@ pars_material.c \
 pars_texture.c \
 pars_camera.c \
 pars_light.c \
+pars_option.c \
 parser.c libft/libft.a -I./libft/includes -g
