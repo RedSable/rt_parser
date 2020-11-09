@@ -68,53 +68,54 @@ int				str_len(char *str)
 	return (count);
 }
 
-char			*get_key(char *str)
+char			*get_key(char **str)
 {
 	char			*a;
 	int				i;
 
 	a = (char *)malloc(sizeof(char) * 256);
 	i = 0;
-	while (*str != '=' && *str != '\0' && i < 255)
+	while (**str != '=' && **str != '\0' && i < 255)
 	{
-		a[i] = *str;
+		a[i] = **str;
 		i++;
-		str++;
+		*str += 1;
 	}
 	a[i] = '\0';
+	if (**str != '\0')
+		*str += 1;
 	return (a);
 }
 
-char			*get_value(char *str)
+char			*get_value(char **str)
 {
 	char		*b;
 	int			i;
 
 	b = (char *)malloc(sizeof(char) * 256);
-	// bzero(b, 256);
 	i = 0;
-	if (*str == '{')
+	if (**str == '{')
 	{
-		str++;
-		while (*str != '}' && *str != '\0' && i < 255)
+		*str += 1;
+		while (**str != '}' && **str != '\0' && i < 255)
 		{
-			b[i] = *str;
+			b[i] = **str;
 			i++;
-			str++;
+			*str += 1;
 		}
-		str++;
 	}
 	else
 	{
-		while (*str != ';' && *str != '}' && *str != '\0' && i < 255)
+		while (**str != ';' && **str != '}' && **str != '\0' && i < 255)
 		{
-			b[i] = *str;
+			b[i] = **str;
 			i++;
-			str++;
+			*str += 1;
 		}
 	}
+	if (**str != '\0')
+		*str += 1;
 	b[i] = '\0';
-	ft_putendl(b);
 	return (b);
 }
 
@@ -132,15 +133,9 @@ void			pars_object(char *str)
 	str++;
 	while (*str != '\0')
 	{
-		a = get_key(str);
-		str += str_len(a);
-		if (*str != '\0')
-			str++;
-		b = get_value(str);
-		str += str_len(b);
-		if (*str != '\0')
-			str++;
-		// printf("%s\n%s\n====\n", a, b);
+		a = get_key(&str);
+		b = get_value(&str);
+		printf("%s\n%s\n====\n", a, b);
 		while (*str == ';' || *str == '}')
 			str++;
 		while (i < g_obj_selector_size)

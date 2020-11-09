@@ -47,10 +47,8 @@ void		pars_light(char *str)
 	str++;
 	while (*str != '\0')
 	{
-		a = get_key(str);
-		str += str_len(a);
-		b = get_value(str);
-		str += str_len(b);
+		a = get_key(&str);
+		b = get_value(&str);
 		// printf("%s\n%s\n====\n", a, b);
 		while (*str == ';' || *str == '}')
 			str++;

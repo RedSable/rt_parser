@@ -194,8 +194,8 @@ typedef struct s_parsed_object
 // int			char_count(char *str);
 // int		block_pars(char *line, int block_type);
 int				str_len(char *str);
-char			*get_key(char *str);
-char			*get_value(char *str);
+char			*get_key(char **str);
+char			*get_value(char **str);
 t_parsed_object	get_default_obj();
 t_light			get_default_light();
 t_camera		get_default_camera();
