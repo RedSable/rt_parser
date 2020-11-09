@@ -5,6 +5,7 @@ get_first_values.c \
 get_obj_mat_types.c \
 get_tex_cam_types.c \
 get_light_type.c \
+logs.c \
 ft_atoi_base.c \
 pars_material.c \
 pars_texture.c \

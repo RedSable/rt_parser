@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/09 18:48:49 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/09 21:01:40 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,14 +181,23 @@ char		*get_read_block(int fd)
 	return (block_line);
 }
 
-// int			pars_router(int block_type, char *block, int log)
-// {
-// 	if (block_type == ambient_light)
-// 		printf("ambient_light:\n");
-// 	else if (block_type == object)
-// 		return (pars_object(line, log));
-	
-// }
+void		pars_router(int block_type, char *block, int log)
+{
+	if (block_type == ambient_light)
+		printf("ambient_light:\n");
+	else if (block_type == object)
+		pars_object(block);
+	else if (block_type == light)
+		pars_light(block);
+	else if (block_type == camera)
+		pars_camera(block);
+	else if (block_type == options)
+		printf("options:\n");
+	else if (block_type == 0)
+		write_logs(UNKNOWN_SCENE_TYPE, log, block);
+	else if (block_type == -1)
+		write_logs(SCENE_TYPE_DOES_NOT_EXIST, log, block);
+}
 
 int			parser(char *file_name)  //t_tr *rt
 {
@@ -206,25 +215,8 @@ int			parser(char *file_name)  //t_tr *rt
 		line = delete_tabs(line);
 		if ((i = check_brackets(line)) == 1)
 		{
-			if (get_block_type(line) == ambient_light)
-				printf("ambient_light:\n");
-			else if (get_block_type(line) == object)
-				pars_object(line);
-			else if (get_block_type(line) == light)
-				pars_light(line);
-			else if (get_block_type(line) == camera)
-				pars_camera(line);
-			else if (get_block_type(line) == options)
-				printf("options:\n");
-			else if (get_block_type(line) == 0)
-			{
-				printf("Unknown type\n\n");
-			}
-			else if (get_block_type(line) == -1)
-			{
-				printf("Name or type does not exist\n\n");
-			}
-			printf("%s\n\n", line);
+			pars_router(get_block_type(line), line, log);
+			// printf("%s\n\n", line);
 		}
 		else if (i == -2)
 			write_logs(COMMENT, log, line);
