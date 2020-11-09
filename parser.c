@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/09 18:30:44 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/09 18:48:49 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,14 +181,14 @@ char		*get_read_block(int fd)
 	return (block_line);
 }
 
-int			pars_router(int block_type, char *block, int log)
-{
-	if (block_type == ambient_light)
-		printf("ambient_light:\n");
-	else if (block_type == object)
-		return (pars_object(line, log));
+// int			pars_router(int block_type, char *block, int log)
+// {
+// 	if (block_type == ambient_light)
+// 		printf("ambient_light:\n");
+// 	else if (block_type == object)
+// 		return (pars_object(line, log));
 	
-}
+// }
 
 int			parser(char *file_name)  //t_tr *rt
 {
