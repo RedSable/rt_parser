@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 15:38:56 by aapricot          #+#    #+#             */
-/*   Updated: 2020/08/07 21:15:14 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/10 02:34:26 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ int					ft_isbase(int c, int base);
 long				ft_strtol(const char *s, char **endptr, int b);
 int					get_next_line(const int fd, char **line);
 void				ft_swap_int(int *a, int *b);
+char				*ft_strndup(const char *s1, size_t n);
 
 #endif

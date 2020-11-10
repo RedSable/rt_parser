@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_pars.c                                     :+:      :+:    :+:   */
+/*   pars_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:28:12 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/05 19:59:27 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/10 01:31:31 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_selector		g_selector_tex[] = {
 	{"color2", offsetof(t_texture, data.checker.even), get_color},
 	{"scale", offsetof(t_texture, data.smooth_perlin.scale), get_float} };
 
-int				g_tex_sel_size = sizeof(g_selector_tex) / sizeof(t_selector);
+int				g_tex_selector_size = sizeof(g_selector_tex) / sizeof(t_selector);
 
 void		pars_texture(char *str, int offset, void *data)
 {
@@ -34,10 +34,10 @@ void		pars_texture(char *str, int offset, void *data)
 	{
 		a = get_key(&str);
 		b = get_value(&str);
-		// printf("%s\n%s\n====\n", a, b);
+		printf("%s\n%s\n====\n", a, b);
 		// while (*str == ';' || *str == '}')
 		// 	str++;
-		while (i < g_tex_sel_size)
+		while (i < g_tex_selector_size)
 		{
 			if (!ft_strcmp(g_selector_tex[i].name, a))
 			{

@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 15:51:27 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/09 21:19:50 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/10 03:14:06 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			get_log_fd(char *str)
 	int		fd;
 	char	*line_1;
 	char	*line_2;
-
+	
 	line_1 = ft_strjoin("logs/", str);
 	line_2 = ft_strjoin(line_1, ".log");
 	if ((fd = open(line_2, O_WRONLY | O_CREAT | O_TRUNC, 0666)) < 0)

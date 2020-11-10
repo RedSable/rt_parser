@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/09 21:01:40 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/10 03:13:52 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ int			parser(char *file_name)  //t_tr *rt
 		if ((i = check_brackets(line)) == 1)
 		{
 			pars_router(get_block_type(line), line, log);
-			// printf("%s\n\n", line);
+			printf("%s\n\n", line);
 		}
 		else if (i == -2)
 			write_logs(COMMENT, log, line);
@@ -232,5 +232,7 @@ int			parser(char *file_name)  //t_tr *rt
 int		main(int ac, char **av)
 {
 	parser(av[1]);
+	// while (1)
+	// 	;
 	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_pars.c                                         :+:      :+:    :+:   */
+/*   pars_obj.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 21:41:52 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/05 20:49:26 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/10 00:17:53 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,6 @@ void			add_parsed_object(t_parsed_object *object)
 	printf("material\ntype = %d\n", object->material.type);
 	printf("kt = %f\n", object->material.kt);
 	printf("texture\ntype = %d\n", object->texture.type);
-}
-
-int				str_len(char *str)
-{
-	int			count;
-
-	count = 0;
-	while (str[count] != '\0')
-		count++;
-	return (count);
 }
 
 char			*get_key(char **str)
@@ -119,14 +109,31 @@ char			*get_value(char **str)
 	return (b);
 }
 
+void			fill_object(char *a, char *b, t_parsed_object *obj)
+{
+	int			i;
+
+	i = 0;
+	while (i < g_obj_selector_size)
+	{
+		if (!ft_strcmp(g_selector_obj[i].name, a))
+		{
+			g_selector_obj[i].func(b, g_selector_obj[i].offset, obj);
+			break ;
+		}
+		// printf("key = %s\ncheck = %s\n\n", a, g_selector_obj[i].name);
+		i++;
+	}
+}
+
 void			pars_object(char *str)
 {
 	char			*a;
 	char			*b;
 	t_parsed_object	obj;
-	int				i;
+	// int				i;
 
-	i = 0;
+	// i = 0;
 	obj = get_default_obj();
 	while (*str != '{' && *str != '\0')
 		str++;
@@ -138,29 +145,20 @@ void			pars_object(char *str)
 		printf("%s\n%s\n====\n", a, b);
 		while (*str == ';' || *str == '}')
 			str++;
-		while (i < g_obj_selector_size)
-		{
-			if (!ft_strcmp(g_selector_obj[i].name, a))
-			{
-				g_selector_obj[i].func(b, g_selector_obj[i].offset, &obj);
-				break ;
-			}
-			// printf("key = %s\ncheck = %s\n\n", a, g_selector_obj[i].name);
-			i++;
-		}
-		i = 0;
+		fill_object(a, b, &obj);
+		// while (i < g_obj_selector_size)
+		// {
+		// 	if (!ft_strcmp(g_selector_obj[i].name, a))
+		// 	{
+		// 		g_selector_obj[i].func(b, g_selector_obj[i].offset, &obj);
+		// 		break ;
+		// 	}
+		// 	// printf("key = %s\ncheck = %s\n\n", a, g_selector_obj[i].name);
+		// 	i++;
+		// }
+		// i = 0;
 		free(a);
 		free(b);
 	}
 	add_parsed_object(&obj);
 }
-
-// int				main(int ac, char **av)
-// {
-// 	char	*str="object{type=torus;radius=1.0f;radius2=0.2f;origin={1,2,3};rotation={x=45;y=30};scaling={2.0f,2.0f,2.0f};material={type=dielectric;kt=1.5f}}";
-// 	char	*line = "object{rotate={x=45;y=30}}";
-// 	// char	*str="object{type=torus;material={type=dielectric;kt=1.5f}}";
-// 	pars_object(str);
-// 	printf("\n\n%s\n", str);
-// 	return (0);
-// }

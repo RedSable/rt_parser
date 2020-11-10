@@ -6,7 +6,7 @@
 #    By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/08 16:50:54 by aapricot          #+#    #+#              #
-#    Updated: 2020/08/07 20:11:18 by aapricot         ###   ########.fr        #
+#    Updated: 2020/11/10 02:33:23 by aapricot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ SRC = $(addprefix ft_,\
 	putchar.c putstr.c putendl.c putnbr.c putchar_fd.c putstr_fd.c putendl_fd.c \
 	putnbr_fd.c isspace.c matfree.c lstnew.c lstdelone.c lstdel.c lstadd.c \
 	lstiter.c lstmap.c wc.c swap.c absolute.c swap_double.c isupper.c \
-	isbase.c strtol.c swap_int.c) get_next_line.c
-CFLAGS = -Wall -Wextra -Werror
+	isbase.c strtol.c swap_int.c strndup.c) get_next_line.c
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = libft.a
 OBJ = $(SRC:.c=.o) 
 

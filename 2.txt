@@ -5,10 +5,15 @@ object =
     origin = {0, 5, 0};
     material = {
         type = emissive/diffuse_light;
-        ls = 1.0;
+        ls = 1.0
     };
+	direction = {1, 1, 1};
     texture = {
-        type = wave;
+        type = perlin;
         color = 0x0000ff00
     }
+	material = {
+		type = phong;
+		kt = 1.5;
+	}
 }

@@ -1,4 +1,4 @@
-gcc -o 321 \
+gcc -g -o 321 \
 pars_obj.c \
 get_default.c \
 get_first_values.c \
@@ -12,4 +12,4 @@ pars_texture.c \
 pars_camera.c \
 pars_light.c \
 pars_option.c \
-parser.c libft/libft.a -I./libft/includes -g
+parser.c libft/libft.a -I./libft/includes

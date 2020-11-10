@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material_pars.c                                    :+:      :+:    :+:   */
+/*   pars_material.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 21:14:07 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/05 19:37:34 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/10 01:19:10 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include "offset.h"
 #include "parser.h"
 
-t_selector		g_selector_mat[] = { {"type", offsetof(t_parsed_object, material.type), get_mat_type},
-									{"ka", offsetof(t_parsed_object, material.ka), get_float},
-									{"kd", offsetof(t_parsed_object, material.kd), get_float},
-									{"kr", offsetof(t_parsed_object, material.kr), get_float},
-									{"ks", offsetof(t_parsed_object, material.ks), get_float},
-									{"kt", offsetof(t_parsed_object, material.kt), get_float},
-									{"reflective_color", offsetof(t_parsed_object, material.reflective_color), get_color},
-									{"is_reflective", offsetof(t_parsed_object, material.is_reflective), get_uchar},
-									{"is_transparent", offsetof(t_parsed_object, material.is_transparent), get_uchar} };
+t_selector		g_selector_mat[] = { {"type", offsetof(t_material, type), get_mat_type},
+									{"ka", offsetof(t_material, ka), get_float},
+									{"kd", offsetof(t_material, kd), get_float},
+									{"kr", offsetof(t_material, kr), get_float},
+									{"ks", offsetof(t_material, ks), get_float},
+									{"kt", offsetof(t_material, kt), get_float},
+									{"reflective_color", offsetof(t_material, reflective_color), get_color},
+									{"is_reflective", offsetof(t_material, is_reflective), get_uchar},
+									{"is_transparent", offsetof(t_material, is_transparent), get_uchar} };
 
 int				g_mat_selector_size = sizeof(g_selector_mat) / sizeof(t_selector);
 

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 02:44:37 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/10 02:44:04 by aapricot         ###   ########.fr       */
+/*   Created: 2020/11/10 02:30:06 by aapricot          #+#    #+#             */
+/*   Updated: 2020/11/10 02:35:24 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strndup(const char *s1, size_t n)
 {
-	char	*str;
-	int		i;
-	int		j;
+	char			*p;
+	char			*rp;
 
-	i = -1;
-	j = -1;
-	if (!s1 || !s2)
+	if (!(p = ft_strnew(n + 1)))
 		return (NULL);
-	str = (char*)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (str == NULL)
-		return (NULL);
-	while (s1[++i] != '\0')
-		str[i] = s1[i];
-	while (s2[++j] != '\0')
-		str[i++] = s2[j];
-	str[i] = '\0';
-	return (str);
+	rp = p;
+	while ((*p = *s1) && (size_t)(p - rp) < n)
+	{
+		p++;
+		s1++;
+	}
+	ft_memset(p, 0, 1 + n - (p - rp));
+	return (rp);
 }

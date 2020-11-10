@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 21:35:46 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/03 21:47:46 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/10 00:41:19 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int					get_tex_type_value(char *str)
 		return (wave_perlin);
 	else if (!ft_strcmp(str, "image"))
 		return (image);
+	return (-1);
 }
 
 int					get_cam_type_value(char *str)
@@ -62,7 +63,7 @@ void				get_tex_type(char *str, int offset, void *data)
 
 	v = (unsigned char *)data + offset;
 	type = (t_texture_type *)v;
-	type = get_tex_type_value(str);
+	*type = get_tex_type_value(str);
 }
 
 void				get_cam_type(char *str, int offset, void *data)
@@ -72,5 +73,5 @@ void				get_cam_type(char *str, int offset, void *data)
 
 	v = (unsigned char *)data + offset;
 	type = (t_camera_type *)v;
-	type = get_cam_type_value(str);
+	*type = get_cam_type_value(str);
 }
