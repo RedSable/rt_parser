@@ -1,0 +1,42 @@
+Comment:
+//----scene----\\
+
+WARNING:
+Has no direction. Using default param
+SUCCESS:
+Render this object
+Block:
+object{type=sphere;origin={0,0,0};material={type=matte;kd=0.7;ka=0.6};texture={type=solid;color={r=0.3;g=0.2;b=0.7}}}
+
+WARNING:
+Has no direction. Using default param
+SUCCESS:
+Render this object
+Block:
+object={type=rectangle;radius=3.0f;origin={0,5,0};material={type=emissive/diffuse_light;ls=1.0;};texture={type=wave;color=0x0000ff00}}
+
+WARNING:
+Has no direction. Using default param
+SUCCESS:
+Render this object
+Block:
+object={type=cylinder;radius=2.0f;origin={-2,0,1};rotate={x=30;y=30;z=30};scale={x=1;y=2;z=1};material={type=metal;kr=1};texture={type=checker;color=0x00ff0000;color2=0x0000ff00}}
+
+WARNING:
+Has no direction. Using default param
+SUCCESS:
+Render this object
+Block:
+object={type=torus;radius=1.0f;radius2=0.2f;origin={1,2,3};rotate{x=45};scale={2.0f,2.0f,2.0f};material={type=dielectric;kt=-0.5f}}
+
+ERROR:
+Material type does not exist
+ERROR:
+Texture type does not exist
+WARNING:
+Has no origin. Using default param
+UNSUCCESS:
+Skip this object
+Block:
+object={type=directional_light;ls=0.3;direction={1,1,1}}
+

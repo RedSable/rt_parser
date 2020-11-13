@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 17:11:31 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/09 21:24:49 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/13 15:29:55 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_camera		get_default_camera()
 
 	camera.angle = 0.0f;
 	camera.d = 0.0f;
-	camera.direction = (cl_float4){0.0f, 0.0f, 0.0f};
+	camera.direction = (cl_float4){NAN};
 	camera.exposure_time = 0.0f;
 	camera.f = 0.0f;
 	camera.fov = 90;
@@ -27,7 +27,7 @@ t_camera		get_default_camera()
 	camera.inv_w = 0.0f;
 	camera.l = 0.0f;
 	camera.normalized = 1;
-	camera.origin = (cl_float4){0.0f, 0.0f, 0.0f};
+	camera.origin = (cl_float4){NAN};
 	camera.ratio = 0.0f;
 	camera.sampler_id = 1;
 	camera.type = -2;
@@ -76,12 +76,12 @@ t_parsed_object		get_default_obj()
 {
 	t_parsed_object	obj;
 
-	obj.direction = (cl_float4){0.0f, 0.0f, 0.0f};
+	obj.direction = (cl_float4){NAN};
 	get_default_material(&obj.material);
 	get_default_texture(&obj.texture);
 	obj.maxm = 0.0f;
 	obj.minm = 0.0f;
-	obj.origin = (cl_float4){0.0f, 0.0f, 0.0f};
+	obj.origin = (cl_float4){NAN};
 	obj.radius2 = 0.0f;
 	obj.radius = 0.0f;
 	obj.rotation = (cl_float3){0.0f, 0.0f, 0.0f};

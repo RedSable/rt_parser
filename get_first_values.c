@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 00:10:21 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/05 19:31:02 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/13 18:30:44 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,16 @@ void		free_tab(char **tab)
 int			len_word(char *str)
 {
 	int len;
+	int	i;
 
+	i = 0;
 	len = 0;
-	while (str[len] != '\0' && ft_isdigit(str[len]))
-		len++;
+	while (str[i] != '\0')
+	{
+		if (ft_isdigit(str[i]))
+			len++;
+		i++;
+	}
 	return (len);
 }
 
@@ -61,7 +67,10 @@ float		ft_atofloat(char *str) //функция говно, нужна друга
 	if (arr[1] != NULL)
 	{
 		k = ft_atoi(arr[1]);
-		res += (float)(k / pow(10, len_word(arr[1])));
+		if (res < 0)
+			res -= (float)(k / pow(10, len_word(arr[1])));
+		else
+			res += (float)(k / pow(10, len_word(arr[1])));
 	}
 	res *= i;
 	free_tab(arr);

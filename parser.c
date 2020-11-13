@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:06 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/10 03:13:52 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/13 16:55:26 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,10 @@ void		pars_router(int block_type, char *block, int log)
 	if (block_type == ambient_light)
 		printf("ambient_light:\n");
 	else if (block_type == object)
-		pars_object(block);
+	{
+		pars_object(block, log);
+		write_logs(WRITE_BLOCK, log, block);
+	}
 	else if (block_type == light)
 		pars_light(block);
 	else if (block_type == camera)

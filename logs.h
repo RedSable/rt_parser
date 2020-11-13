@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 16:10:52 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/09 21:18:53 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/13 15:22:22 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # define UNKNOWN_MATERIAL_TYPE				-11
 # define UNKNOWN_TEXTURE_TYPE				-12
 # define COLOR_DOES_NOT_EXIST				-13
+# define PARS_SUCCESS						-14
+# define PARS_UNSUCCESS						-15
+# define BAD_ORIGIN							-16
+# define BAD_DIRECTION						-17
 
 void		write_logs(int num_log, int fd, char *str);
 

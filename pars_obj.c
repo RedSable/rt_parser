@@ -6,13 +6,14 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 21:41:52 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/10 00:17:53 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/13 15:24:08 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "parser.h"
+#include "logs.h"
 // #include "camera.h"
 // #include "rt_options.h"
 #include "offset.h"
@@ -35,27 +36,59 @@ t_selector		g_selector_obj[] = {
 
 int				g_obj_selector_size = sizeof(g_selector_obj) / sizeof(t_selector);
 
-void			add_parsed_object(t_parsed_object *object)
+void			add_parsed_object(t_parsed_object *object, int log)
 {
-	printf("type = %d\n", object->type);
-	printf("origin.x = %f\n", object->origin.x);
-	printf("origin.y = %f\n", object->origin.y);
-	printf("origin.z = %f\n", object->origin.z);
-	printf("direction.x = %f\n", object->direction.x);
-	printf("direction.y = %f\n", object->direction.y);
-	printf("direction.z = %f\n", object->direction.z);
-	printf("rotation.x = %f\n", object->rotation.x);
-	printf("rotation.y = %f\n", object->rotation.y);
-	printf("rotation.z = %f\n", object->rotation.z);
-	printf("scaling.x = %f\n", object->scaling.x);
-	printf("scaling.y = %f\n", object->scaling.y);
-	printf("scaling.z = %f\n", object->scaling.z);
-	// printf("vector1 = %s\n", object->vector1);
-	printf("radius = %f\n", object->radius);
-	printf("radius2 = %f\n", object->radius2);
-	printf("material\ntype = %d\n", object->material.type);
-	printf("kt = %f\n", object->material.kt);
-	printf("texture\ntype = %d\n", object->texture.type);
+	int			flag;
+
+	flag = 0;
+	if (object->type == -2)
+	{
+		flag++;
+		write_logs(OBJ_TYPE_DOES_NOT_EXIST, log, "ERROR:");
+	}
+	if ((object->material.type == -2) && (object->texture.type == -2))
+	{
+		flag++;
+		write_logs(MATERIAL_TYPE_DOES_NOT_EXIST, log, "ERROR:");
+		write_logs(TEXTURE_TYPE_DOES_NOT_EXIST, log, "ERROR:");
+	}
+	if (isnan(object->origin.x))
+	{
+		object->origin = (cl_float4){0.0f, 0.0f, 0.0f};
+		write_logs(BAD_ORIGIN, log, "WARNING:");
+	}
+	if (isnan(object->direction.x))
+	{
+		object->direction = (cl_float4){0.0f, 0.0f, 0.0f};
+		write_logs(BAD_DIRECTION, log, "WARNING:");
+	}
+	if (flag == 0)
+	{
+		write_logs(PARS_SUCCESS, log, NULL);
+		printf("type = %d\n", object->type);
+		printf("origin.x = %f\n", object->origin.x);
+		printf("origin.y = %f\n", object->origin.y);
+		printf("origin.z = %f\n", object->origin.z);
+		printf("direction.x = %f\n", object->direction.x);
+		printf("direction.y = %f\n", object->direction.y);
+		printf("direction.z = %f\n", object->direction.z);
+		printf("rotation.x = %f\n", object->rotation.x);
+		printf("rotation.y = %f\n", object->rotation.y);
+		printf("rotation.z = %f\n", object->rotation.z);
+		printf("scaling.x = %f\n", object->scaling.x);
+		printf("scaling.y = %f\n", object->scaling.y);
+		printf("scaling.z = %f\n", object->scaling.z);
+		// printf("vector1 = %s\n", object->vector1);
+		printf("radius = %f\n", object->radius);
+		printf("radius2 = %f\n", object->radius2);
+		printf("material\ntype = %d\n", object->material.type);
+		printf("kt = %f\n", object->material.kt);
+		printf("texture\ntype = %d\n", object->texture.type);
+	}
+	else
+	{
+		write_logs(PARS_UNSUCCESS, log, NULL);
+	}
 }
 
 char			*get_key(char **str)
@@ -126,7 +159,7 @@ void			fill_object(char *a, char *b, t_parsed_object *obj)
 	}
 }
 
-void			pars_object(char *str)
+void			pars_object(char *str, int log)
 {
 	char			*a;
 	char			*b;
@@ -160,5 +193,5 @@ void			pars_object(char *str)
 		free(a);
 		free(b);
 	}
-	add_parsed_object(&obj);
+	add_parsed_object(&obj, log);
 }

@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:43:41 by aapricot          #+#    #+#             */
-/*   Updated: 2020/11/09 15:55:26 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/11/12 16:09:21 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ t_camera		get_default_camera();
 t_rt_options	get_default_options();
 void			get_default_material(t_material *material);
 void			get_default_texture(t_texture *texture);
-void			pars_object(char *str);
+void			pars_object(char *str, int log);
 void		pars_light(char *str);
 void		pars_camera(char *str);
 int			get_log_fd(char *str);

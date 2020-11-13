@@ -1,3 +1,5 @@
+//----scene----\\
+
 camera  = {
     type = thins lens/default/fisheye/ spherical;
     origin = {0, 2, 0};
