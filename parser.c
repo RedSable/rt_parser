@@ -210,9 +210,10 @@ int			parser(char *file_name)  //t_tr *rt
 	int		log;
 
 	i = 0;
-	log = get_log_fd(file_name);
+	if ((log = get_log_fd(file_name)) < 0)
+		return (-1);
 	if ((fd = open(file_name, O_RDONLY)) < 0)
-		;
+		return (-1);
 	while ((line = get_read_block(fd)) != NULL)
 	{
 		line = delete_tabs(line);

@@ -22,7 +22,11 @@ int			get_log_fd(char *str)
 	line_1 = ft_strjoin("logs/", str);
 	line_2 = ft_strjoin(line_1, ".log");
 	if ((fd = open(line_2, O_WRONLY | O_CREAT | O_TRUNC, 0666)) < 0)
+	{
+		free(line_1);
+		free(line_2);
 		return (-1);
+	}
 	free(line_1);
 	free(line_2);
 	return (fd);
